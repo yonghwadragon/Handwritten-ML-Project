@@ -1,6 +1,5 @@
 # 🖊️ Handwritten Digit Recognition with Neural Network
 손글씨 숫자 인식을 위한 신경망 구현 (Python &amp; Numpy)
-# 🖊️ Handwritten Digit Recognition with Neural Network
 
 ## 📌 프로젝트 개요
 이 프로젝트는 손글씨 숫자 인식 (Handwritten Digit Recognition)을 위한 다층 퍼셉트론 신경망 (MLPClassifier)을 활용하여 **MNIST 스타일의 데이터를 학습하고 예측하는 모델**을 개발한 것입니다.  
