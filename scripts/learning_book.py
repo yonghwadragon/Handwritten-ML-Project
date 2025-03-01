@@ -13,7 +13,9 @@ def sigmoid(x):
 	return 1.0/(1.0+np.exp(-x))
 def d_sigmoid(u):
     return np.exp(-u)/(1.0+np.exp(-u))**2
-(X,T) = mnist_load('train')
+# (X,T) = mnist_load('train') -> (X, T) = mnist_load('dataset/train')
+# 경로 수정: 'dataset/train'으로 바꿔서 dataset 폴더 안에 있는 trainimages.bin, trainlabels.bin 사용
+(X, T) = mnist_load('dataset/train')
 input_node = 28*28
 hidden_node = 30
 output_node = 10
@@ -23,7 +25,7 @@ v = 0.1*(2*np.random.random((output_node,hidden_node+1))-1)
 xl = np.ones((input_node+1,1))
 z = np.ones((hidden_node+1,1))
 y = np.ones((output_node,1))
-eta = 0.05;MaxIter = 50;Tol=1.0e-10;Resid=Tol*2;
+eta = 0.05;MaxIter = 50;Tol=1.0e-10;Resid=Tol*2
 Iter=1;E1 = 0
 for m in range(len(X)):
     xl[1:,0] = X[m]
@@ -51,7 +53,7 @@ while Resid>=Tol and Iter<=MaxIter:
         dEdw = np.dot(del_j,xl.T)
         v = v-eta*dEdv
         w = w-eta*dEdw
-    E2 = 0;
+    E2 = 0
     for m in range(len(T)):
         xl[1:,0] = X[m]
         uh = np.dot(w,xl)
@@ -67,4 +69,6 @@ while Resid>=Tol and Iter<=MaxIter:
     print("%i-th update and error is %f" %(Iter,E1))
     Iter+=1
 print("The learning is finished")
-np.savez('learningdata', w=w,v=v)
+# np.savez('learningdata', w=w,v=v) -> np.savez('model/learningdata', w=w, v=v)
+# 학습된 가중치를 'model/learningdata.npz'로 저장 (model 폴더)
+np.savez('model/learningdata', w=w, v=v)
