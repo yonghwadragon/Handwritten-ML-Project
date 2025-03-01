@@ -76,10 +76,10 @@ python scripts/predict_custom_2.py
 
 ---
 
-## 📊 학습 과정 시각화 (Google Colab)
-| 학습 과정 | 추가적인 시각화 |
+## 📊 Google Colab
+| Google Colab_1 | Google Colab_2 |
 |-----------|---------------|
-| ![Training Process](model/gscv2.gif) | ![Hyperparameter Tuning](model/gscv2_2.gif) |
+| ![Training Process](model/gscv2_2.gif) | ![Hyperparameter Tuning](model/gscv2.gif) |
 
 ---
 
