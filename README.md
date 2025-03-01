@@ -39,11 +39,7 @@ Google Colab에서 처음 작성되었으며, 이후 VS Code 환경에서도 실
  ├── accuracy_check.py     # 전체 테스트 데이터셋 정확도 계산
  ├── predict_custom_1.py   # 특정 테스트 이미지에 대한 예측 및 시각화
  ├── predict_custom_2.py   # 직접 그린 손글씨 숫자 예측
-
-
-
 📄 README.md               # 프로젝트 설명 파일
-📄 .gitignore              # 불필요한 파일 제외
 ```
 
 ---
