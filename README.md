@@ -34,7 +34,7 @@ Google Colab에서 처음 작성되었으며, 이후 VS Code 환경에서도 실
  ├── learningdata.npz      # 학습된 가중치 저장
 
 📂 scripts                 # 코드 관련 폴더
- ├── learning_book.py      # 신경망 학습 코드 (Colab에서 작성됨)
+ ├── learning_book.py      # 신경망 학습 코드 (Colab에서 작성 후 VS Code에서 실행 가능하도록 수정됨)
  ├── predict_book.py       # 손글씨 숫자 예측 코드
  ├── accuracy_check.py     # 전체 테스트 데이터셋 정확도 계산
  ├── predict_custom_1.py   # 특정 테스트 이미지에 대한 예측 및 시각화
