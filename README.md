@@ -98,7 +98,7 @@ gscv2_2.gif                # Google Colab에서 MNIST 데이터로 Random Search
 ## 📊 Google Colab
 | Google Colab_1 | Google Colab_2 |
 |-----------|---------------|
-| ![Training Process](model/gscv2_2.gif) | ![Hyperparameter Tuning](model/gscv2.gif) |
+| ![Training Process](gscv2_2.gif) | ![Hyperparameter Tuning](gscv2.gif) |
 
 ---
 
