@@ -42,8 +42,8 @@ Google Colab에서 처음 작성되었으며, 이후 VS Code 환경에서도 실
  ├── predict_custom_1.py   # 특정 테스트 이미지에 대한 예측 및 시각화
  ├── predict_custom_2.py   # 직접 그린 손글씨 숫자 예측
  ├── predict_custom_3.py   # 여러 사용자 손글씨 이미지 일괄 예측 및 확률 시각화
-gscv2.gif                  # Google Colab에서 MNIST 데이터로 Random Search(은닉노드, 학습률, epoch 등)
-gscv2_2.gif                # Google Colab에서 MNIST 데이터로 Random Search(은닉노드, 학습률, epoch 등)
+💻 gscv2.gif                  # Google Colab에서 MNIST 데이터로 Random Search(은닉노드, 학습률, epoch 등)
+💻 gscv2_2.gif                # Google Colab에서 MNIST 데이터로 Random Search(은닉노드, 학습률, epoch 등)
 📄 README.md               # 프로젝트 설명 파일
 📄 MNIST_4.ipynb           # Google Colab에서 진행한 학습 및 Random Search 실험
 ```
