@@ -1,34 +1,57 @@
-# predict_custom_2.py
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as img
+import os
 
-def sigmoid(x):
-    return 1/(1+np.exp(-x))
+def relu(x):
+    return np.maximum(0, x)
 
-data = np.load('model/learningdata.npz')
-w = data['w']
-v = data['v']
+def softmax(u):
+    shift_u = u - np.max(u)
+    exp_u = np.exp(shift_u)
+    return exp_u / np.sum(exp_u)
 
-# 예: 0_1.png (손글씨 숫자 0) 예측
-custom_image_path = "dataset/sample_images/0/0_1.png"
-newdata = img.imread(custom_image_path)
+def main():
+    # 1) 모델 가중치 로드
+    data = np.load('model/learningdata.npz')
+    w = data['w']
+    v = data['v']
+    hidden_node = w.shape[0]
+    print(f"Hidden layer size: {hidden_node}")
 
-# 흑백으로 처리 (이미지 포맷에 따라 조정)
-# 예시: 그림판 흑백 PNG라면, newdata[:,:,0] 형태가 아닐 수도 있음 -> 확인 필요
-newdata = 1 - newdata[:,:,0]
+    # 2) 사용자 손글씨 0_1.png
+    custom_image_path = "dataset/sample_images/2/2_4.png"
+    if not os.path.exists(custom_image_path):
+        print("❌ Image not found:", custom_image_path)
+        return
 
-plt.title("My Handwritten Digit")
-plt.imshow(newdata, cmap='gray')
-plt.show()
+    newdata = img.imread(custom_image_path)
+    if newdata.max() > 1:
+        newdata = newdata / 255.0
+    if len(newdata.shape) == 3:
+        newdata = newdata[:,:,0]
+    newdata = 1 - newdata  # MNIST는 검은 배경, 흰 글자
 
-newX = np.ones([785,1])
-for i in range(28):
-    newX[i*28+1:(i+1)*28+1,0] = newdata[i,:]
+    plt.title("My Handwritten Digit")
+    plt.imshow(newdata, cmap='gray')
+    plt.show()
 
-z = np.ones([31,1])
-z[1:, :] = sigmoid(np.dot(w,newX))
-y = sigmoid(np.dot(v,z))
+    # 3) Forward (ReLU + Softmax)
+    input_node = 784
+    newX = np.ones((input_node+1,1))
+    # Flatten
+    for i in range(28):
+        newX[i*28+1:(i+1)*28+1,0] = newdata[i,:]
 
-predict_value = np.argmax(y)
-print(f"Prediction for custom image: {predict_value}")
+    z = np.ones((hidden_node+1,1))
+    uh = np.dot(w, newX)
+    z[1:, 0] = relu(uh).reshape(-1)
+
+    uo = np.dot(v, z)
+    y  = softmax(uo.flatten())
+
+    predict_value = np.argmax(y)
+    print(f"Prediction for custom image: {predict_value}")
+
+if __name__ == "__main__":
+    main()
